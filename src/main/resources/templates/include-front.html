@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="head">
+    <meta charset=utf-8"utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--CSS-->
+    <link rel="stylesheet" th:href="@{/front/css/default.css}"/>
+    <link rel="stylesheet" th:href="@{/front/css/public.css}"/>
+    <link rel="stylesheet" th:href="@{/front/css/animation.css}"/>
+    <link rel="stylesheet" th:href="@{/front/css/skin_1.css}"/>
+    <link rel="stylesheet" th:href="@{/front/css/font-icon.css}"/>
+    <link rel="stylesheet" th:href="@{/front/css/swiper.css}"/>
+    <link rel="stylesheet" th:href="@{/front/css/index.css}"/>
+    <!--JS-->
+    <script type="text/javascript" th:src="@{/front/js/jquery.min.js}"></script>
+    <script>
+        $("body").append(
+            "<div id=\"progress\"><span></span></div>"
+        )
+    </script>
+    <script type="text/javascript" th:src="@{/front/js/superbg.min.js}"></script>
+    <script type="text/javascript" th:src="@{/front/js/checkform.js}"></script>
+    <script type="text/javascript" th:src="@{/front/js/skin.js}"></script>
+    <!--[if lte IE 9]>
+    <script>window.location.href = 'https://cdn.dmeng.net/upgrade-your-browser.html?referrer=' + location.href;</script>
+    <![endif]-->
+    <script type="text/javascript" th:src="@{/front/js/index.js}"></script>
+    <script type="text/javascript" th:src="@{/front/js/showtip.js}"></script>
+    <script type="text/javascript" th:src="@{/front/js/hc-sticky.js}"></script>
+    <script type="text/javascript" th:src="@{/front/js/swiper.min.js}"></script>
+    <!--    谷歌站长平台-->
+    <meta name="google-site-verification" content="bqQElyjFpbvKedA0KBqnhr-HW_2lrjYKfQ8yW_NsYB0"/>
+    <!--    百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8d87b104337ffe716311a5b6e78efd28";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</div>
+
+
+<header class="myheader" th:fragment="header">
+    <!--导航开始-->
+    <div class="top">
+        <div class="top-left">
+            <!--logo部分-->
+            <div class="logo">
+                <a href="/">
+                    <img src="/front/images/logo.png"/>
+                </a>
+            </div>
+            <!--滚动消息-->
+            <div class="web-xiaoxi">
+                <i class="el-speaker"></i>
+                <ul class="mulitline">
+                    <li th:each="notice:${notices}" th:text="${notice.noticeTitle}"></li>
+                </ul>
+            </div>
+            <!--手机菜单按钮-->
+            <div class="mobile-nav"><i class="el-lines"></i><i class="el-remove"></i></div>
+        </div>
+        <!--电脑导航开始-->
+        <nav class="mynav">
+            <ul class="orange-text">
+                <li class=""><a href="/">首页</a></li>
+                <li class='drop'>
+                    <a href="JavaScript:;">分类<i class='el-chevron-down'></i></a>
+                    <div class="drop-nav orange-text ">
+                        <ul>
+                            <li th:each="category:${categories}">
+                                <a th:href="${'/f/category/'+category.categoryId+'.html'}"
+                                   th:text="${category.categoryTitle}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="/f/archives.html">归档</a></li>
+                <li><a href="/f/link.html">友链</a></li>
+                <li><a href="/f/leaveComment.html">留言</a></li>
+                <li><a href="/f/about.html">关于</a></li>
+            </ul>
+            <!--移动的滑动-->
+            <div class="move-bg"></div>
+            <!--移动的滑动 end-->
+        </nav>
+        <!--登录-->
+        <div class="vip" style="width: 4%;float: right;text-align: right;">
+            <a href="/index">
+                <img class="img-circle"
+                     src="/front/images/default_head_img.gif"
+                     alt="后台登录" title="后台登录" style="margin-top: 17px;">
+            </a>
+        </div>
+        <!--手机导航-->
+        <div class="mob-menu">
+            <!--手机下拉菜单-->
+            <ul class="mob-ulnav">
+                <li><a href="/">首页</a></li>
+                <li class='mob-drop'>
+                    <a href="javascrip:;">分类<i></i></a>
+                    <ul class="mob-dropmenu">
+                        <li th:each="category:${categories}">
+                            <a th:href="${'/f/category/'+category.categoryId+'.html'}"
+                               th:text="${category.categoryTitle}"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="/f/archives.html">归档</a></li>
+                <li><a href="/f/link.html">友链</a></li>
+                <li><a href="/f/leaveComment.html">留言</a></li>
+                <li><a href="/f/about.html">关于</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--导航结束-->
+</header>
+
+
+<!---底部开始-->
+<footer th:fragment="footer">
+    <!--底部导航-->
+    <div class="foot-nav">
+        <div class="copy-right"><span>CopyRight &#169; 2017-2019 Dimple &#160;</span></div>
+        <div>
+            <span>
+                <a href="/f/copyright.html" target="_blank">版权说明</a>
+                -<a href="/f/delete.html" target="_blank">侵删联系</a>
+                -<a href="sitemap-1.xml" target="_blank">网站地图</a>
+                -<a href="http://www.miitbeian.gov.cn">蜀ICP备 19004343</a>
+            </span>
+        </div>
+    </div>
+    <div id="toTop">返回顶部</div>
+    <script>
+        $({property: 0}).animate({property: 100}, {
+            duration: 3000,
+            step: function () {
+                var percentage = Math.round(this.property);
+                $('#progress').css('width', percentage + "%");
+                if (percentage == 100) {
+                    $("#progress").addClass("done");//完成，隐藏进度条
+                }
+            }
+        });
+        //站长推送
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</footer>
+
+<aside class="myaside" th:fragment="side">
+    <!--个人信息-->
+    <div class="web-author bg-color animation-div">
+        <div class="author-tx">
+            <a class="img-circle" href="/f/about.html" title="点击查看详细信息">
+                <img class="img-circle" src="/front/images/ava.png"/>
+            </a>
+        </div>
+        <div class="author-name"><span class="blue-text">边小丰</span>
+            <p></p>
+        </div>
+    </div>
+    <!--关注我-->
+    <div class="focus-me bg-color animation-div">
+        <h4 class="index-title"><i class="el-heart"></i>关注我
+            <small>Focus Me</small>
+        </h4>
+        <div class="xiangguan">
+            <div>
+                <a class="benbo"
+                   href="mailto:bianxiaofeng@sohu.com" rel="nofollow" target="_blank">
+                    <i class="el el-envelope el-spin"></i>
+                </a>
+                <span>邮件</span>
+            </div>
+            <div>
+                <a class="github" href="https://github.com/DimpleFeng" rel="nofollow" target="_blank">
+                    <i class="el el-github el-spin"></i>
+                </a>
+                <span>github</span></div>
+            <div>
+                <a class="mail-btn" href="javascript:;">
+                    <i class="el el-picasa el-spin"></i></a>
+                <span>微信</span>
+            </div>
+        </div>
+        <div class="mail-dy">
+            <img src="/front/images/weixin.png">
+            <i class="el-remove fx-close"></i>
+        </div>
+    </div>
+    <!--搜索-->
+    <div class="search animation-div">
+        <form action="/search" method="get" id="searchForm">
+            <div class="search-index">
+                <input name="search_word" id="search_word" type="text" placeholder="请输入关键字"
+                       onfocus="this.placeholder=''"
+                       onblur="this.placeholder='请输入关键字'"/>
+                <i class="el-search"><input id="search" value=" " type="submit"/></i>
+            </div>
+            <script>
+                $("#search").click(function () {
+                    $("#searchForm").attr("action", "/f/search/" + $("#search_word").val() + ".html");
+                });
+            </script>
+        </form>
+    </div>
+    <!--文章排行tab-->
+    <div class="mytab bg-color animation-div">
+        <h4 class="index-title">
+            <i class="el-signal"></i>点击排行
+            <small> Article Ranking</small>
+        </h4>
+        <ul class="paihang-ul" style="display: block;">
+            <li th:each="blog:${blogRanking}">
+                <span></span>
+                <a th:href="${'/f/article/'+blog.blogId+'.html'}" th:title="${blog.title}"
+                   th:utext="${blog.title+'<b>('+blog.click+')</b>'}"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="clos-new bg-color animation-div">
+        <h4 class="index-title"><i class="el-bulb"></i>最新更新
+            <small>Close New</small>
+        </h4>
+        <ul>
+            <li>
+                <i class="el-cloud"></i>
+                <iframe id="tianqi" scrolling="no" frameborder="0" allowtransparency="true"
+                        src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+            </li>
+            <li th:each="blog:${newestUpdateBlog}">
+                <span><i class="el-arrow-up"></i>最近：<font class="blue-text">边小丰</font><span
+                        th:text="${#dates.format(blog.updateTime, 'MM-dd hh:mm')}"> 03-01 09:30</span></span>
+                <a th:href="${'/f/article/'+blog.blogId+'.html'}" th:title="${blog.title}"> 更新了<b
+                        class="lable">文章</b></a>
+            </li>
+        </ul>
+    </div>
+    <!--推荐图文-->
+    <div class="article-push  bg-color animation-div">
+        <h4 class="index-title">
+            <i class="el-asl"></i>推荐图文
+            <small>Push Article</small>
+        </h4>
+        <ul>
+            <li th:each="blog:${supportBlog}">
+                <div class="arcimg ">
+                    <a th:href="${'/f/article/'+blog.blogId+'.html'}" target="_blank">
+                        <img th:src="${blog.headerImg}" th:alt="${blog.title}"
+                             th:title="${blog.title}">
+                    </a>
+                </div>
+                <div class="arc-right">
+                    <h4 class="blue-text"><a th:href="${'/f/article/'+blog.blogId+'.html'}" th:text="${blog.title}"></a>
+                    </h4>
+                    <p th:text="${blog.summary}"></p>
+                    <ul>
+                        <li>
+                            <a th:title="${'发表于'+#dates.format(blog.createTime, 'MM-dd hh:mm')}">
+                                <i class="el-time"></i><span
+                                    th:text="${#dates.format(blog.createTime, 'MM-dd hh:mm')}"></span>
+                            </a>
+                        </li>
+                        <li><a th:title="${blog.click+'次浏览'}"><i class="el-fire"></i><span
+                                th:text="${blog.click}"></span> </a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--标签-->
+    <div class="cloud bg-color animation-div">
+        <h4 class="index-title"><i class="el-tags"></i>标签云
+            <small>Tags Clouds</small>
+        </h4>
+        <ul id="3dcloud">
+            <li th:each="tag,tagStat:${tags}">
+                <a th:class="${'tstyle-'+tagStat.count%4+1}" th:href="${'/f/tag/'+tag.tagId+'.html'}"
+                   th:title="${'标签：'+tag.tagTitle}" th:text="${tag.tagTitle+' ('+tag.count+')'}">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--友情链接-->
+    <div class="side-link ">
+        <h4 class="index-title"><i class="el-paper-clip"></i>友情链接
+            <small>Friend Links</small>
+            <a href="/f/link.html"><i
+                    class="el el-plus"></i>申请</a></h4>
+        <ul>
+            <li th:each="link:${links}">
+                <a th:class="${'tstyle-'+(linkStat.index+1)%5}"
+                   th:href="${'/f/linkRedirect?ref='+link.url+'&id='+link.linkId}"
+                   target="_blank" th:title="${link.title}" th:text="${link.title}">娱乐</a>
+            </li>
+        </ul>
+    </div>
+    <!--文章目录-->
+    <div class="directory mob-hidden " id="Catalog_box" th:if="${blog!=null}">
+        <h4 class="index-title"><i class="el-paper-clip"></i>文章目录
+            <small> Article Directory</small>
+        </h4>
+        <div style="width: 300px;" class="">
+            <div id="toolbar">
+                <div id="toolbar-c"></div>
+            </div>
+        </div>
+    </div>
+</aside>
+</html>
