@@ -1,6 +1,7 @@
 $(function () {
     validateRule();
     $('.imgcode').click(function () {
+    	debugger
         var url = ctx + "captcha/captchaImage?type=" + captchaType + "&s=" + Math.random();
         $(".imgcode").attr("src", url);
     });
@@ -41,7 +42,6 @@ function login() {
 }
 
 function validateRule() {
-	debugger
     var icon = "<i class='fa fa-times-circle'></i> ";
     $("#signupForm").validate({
         rules: {
