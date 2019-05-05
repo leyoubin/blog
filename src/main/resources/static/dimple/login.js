@@ -1,5 +1,4 @@
 $(function () {
-	debugger
     validateRule();
     $('.imgcode').click(function () {
         var url = ctx + "captcha/captchaImage?type=" + captchaType + "&s=" + Math.random();
@@ -9,7 +8,6 @@ $(function () {
 
 $.validator.setDefaults({
     submitHandler: function () {
-    	debugger
         login();
     }
 });
