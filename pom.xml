@@ -9,8 +9,8 @@
     <packaging>jar</packaging>
 
     <name>DimpleBlog</name>
-    <url>http://www.bianxiaofeng.com</url>
-    <description>Dimple的个人博客系统</description>
+    <url>http://www.baidu.com</url>
+    <description>木木三的个人博客系统</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
